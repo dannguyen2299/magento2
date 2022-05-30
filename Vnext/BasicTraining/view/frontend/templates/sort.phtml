@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @var \Vnext\BasicTraining\Block\Sort $block
+ */
+$gridrecords = $block->getDetails();
+echo   $student =$this->getRequest()->getParam('sort');
+?>
+<div class="table-wrapper orders-history">
+    <!--        Tabel-->
+    <table class="data table table-order-items history" id="my-orders-table">
+        <caption class="table-caption"><?php echo __('Grid Record') ?></caption>
+        <thead>
+        <tr>
+            <th scope="col" class="col id"><?php echo __('Entity Id') ?></th>
+            <th scope="col" class="col title"><?php echo __('Name') ?></th>
+            <th scope="col" class="col product"><?php echo __('Gender') ?></th>
+            <th scope="col" class="col amount"><?php echo __('Dob') ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($gridrecords as $item): ?>
+            <tr>
+                <td data-th="<?= $block->escapeHtml(__('Entity Id')) ?>" class="col id">
+                    <?php echo $item->getEntity_id() ?>
+                </td>
+                <td data-th="<?= $block->escapeHtml(__('Name')) ?>" class="col id">
+                    <?php echo $item->getName() ?>
+                </td>
+                <td data-th="<?= $block->escapeHtml(__('Gender')) ?>" class="col id">
+                    <?php if($item->getGender()==1){
+                        echo "Nam";
+                    }else{
+                        echo "Nữ";
+                    } ?>
+                </td>
+                <td data-th="<?= $block->escapeHtml(__('Dob')) ?>" class="col id">
+                    <span><?= $block->escapeHtml($item->getdob()) ?></span>
+                </td>
+                <td data-th="<?= $block->escapeHtml(__('Detail')) ?>" class="col id">
+                    <a  href="<?php echo $block->getUrl('student/post/details').'?ids='.$item->getEntity_id() ?>">Detail</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+

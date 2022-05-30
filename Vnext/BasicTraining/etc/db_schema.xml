@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+<!--    table : a_dan_catalog_product_entity-->
+    <table name="a_dan_catalog_product_entity"  onCreate="migrateDataFromAnotherTable(dan_catalog_product_entity)" resource="default" engine="innodb" comment="Catalog Product Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="smallint" name="attribute_set_id" padding="5" unsigned="true" nullable="false"
+                identity="false" default="0" comment="Attribute Set ID"/>
+        <column xsi:type="varchar" name="type_id_dan_1"   onCreate="migrateDataFrom(type_id_dan)" nullable="false" length="32" default="simple" comment="Type ID"/>
+        <column xsi:type="varchar" name="sku" nullable="true" length="64" comment="SKU"/>
+        <column xsi:type="smallint" name="has_options" padding="6" unsigned="false" nullable="false" identity="false"
+                default="0" comment="Has Options"/>
+        <column xsi:type="smallint" name="required_options" padding="5" unsigned="true" nullable="false"
+                identity="false" default="0" comment="Required Options"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="CATALOG_PRODUCT_ENTITY_ATTRIBUTE_SET_ID" indexType="btree">
+            <column name="attribute_set_id"/>
+        </index>
+        <index referenceId="CATALOG_PRODUCT_ENTITY_SKU" indexType="btree">
+            <column name="sku"/>
+        </index>
+    </table>
+
+<!--    table : danNguyen-->
+    <table name="danNguyen" resource="default" engine="innodb" comment="DanNguyen Table">
+        <column xsi:type="int" name="cmt_id" padding="10" unsigned="true" nullable="false" comment="CMT ID"/>
+        <column xsi:type="varchar" name="ho_ten" nullable="false" length="32"  comment="Ho va ten"/>
+        <column xsi:type="varchar" name="que_quan" nullable="false" length="64" comment="Que quan"/>
+        <column xsi:type="varchar" name="nghe_nghiep" 	disabled="true" nullable="true" length="64" comment="Nghe nghiep"/>
+        <column xsi:type="int" name="date" padding="10" unsigned="true" nullable="false" comment="Ngay sinh"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="cmt_id"/>
+        </constraint>
+
+    </table>
+
+<!--    table : new_tb_17-->
+    <table name="new_tb_17" onCreate="migrateDataFromAnotherTable(tb_17)" resource="default" engine="innodb" comment="DanNguyen Table">
+        <column xsi:type="int" name="cmt_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="CMT ID"/>
+        <column xsi:type="varchar" name="ho_ten" nullable="false" length="32"  comment="Ho va ten"/>
+        <column xsi:type="varchar" name="que_quan" nullable="true" length="64" comment="Que quan"/>
+        <column xsi:type="int" name="date" padding="10" unsigned="true" nullable="false" comment="Ngay sinh"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="cmt_id"/>
+        </constraint>
+    </table>
+
+<!--    table :order_dan-->
+    <table name="order_dan" resource="default" engine="innodb" comment="Order Table">
+        <column xsi:type="int" name="order_id" padding="10" unsigned="true" nullable="false" comment="Order ID"/>
+        <column xsi:type="int" name="cmt_id" padding="10" unsigned="true" nullable="false" comment="CMT ID"/>
+        <column xsi:type="varchar" name="order_name" nullable="false" length="32"  comment="Name Order"/>
+        <column xsi:type="int" name="so_luong" padding="10" unsigned="true" nullable="false" comment="So Luong order"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="order_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FL_danNguyen_OrderId" table="order_dan"
+                    column="cmt_id" referenceTable="danNguyen" referenceColumn="cmt_id" onDelete="CASCADE"/>
+    </table>
+
+    <!--    table : students-->
+    <table name="students"  resource="default" engine="innodb" comment="Students Table">
+        <column xsi:type="int" name="entity_id"  padding="10" unsigned="true" nullable="false" identity="true"
+                comment="ID Student"/>
+        <column xsi:type="varchar" name="name" nullable="true" length="255"  default="null" comment="Ho va ten"/>
+        <column xsi:type="tinyint" name="gender" nullable="true"  unsigned="false"  default="null" comment="Gioi tinh"/>
+        <column xsi:type="date" name="dob" nullable="true"  comment="Ngay sinh"/>
+        <column xsi:type="text" name="address" nullable="true"  comment="Dia chi"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+
+</schema>

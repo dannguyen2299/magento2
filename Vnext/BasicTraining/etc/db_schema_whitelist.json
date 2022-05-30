@@ -1,0 +1,159 @@
+{
+    "catalog_product_entity": {
+        "column": {
+            "entity_id": true,
+            "attribute_set_id": true,
+            "type_id": true,
+            "sku": true,
+            "has_options": true,
+            "required_options": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "CATALOG_PRODUCT_ENTITY_ATTRIBUTE_SET_ID": true,
+            "CATALOG_PRODUCT_ENTITY_SKU": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "danNguyen": {
+        "column": {
+            "entity_id": true,
+            "attribute_set_id": true,
+            "type_id": true,
+            "sku": true,
+            "has_options": true,
+            "required_options": true,
+            "created_at": true,
+            "updated_at": true,
+            "cmt_id": true,
+            "ho_ten": true,
+            "que_quan": true,
+            "date": true,
+            "nghe_nghiep": true
+        },
+        "index": {
+            "DANNGUYEN_ATTRIBUTE_SET_ID": true,
+            "DANNGUYEN_SKU": true,
+            "DANNGUYEN_QUE_QUAN": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "tb_17": {
+        "column": {
+            "cmt_id": true,
+            "ho_ten": true,
+            "que_quan": true,
+            "date": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "new_tb_17": {
+        "column": {
+            "cmt_id": true,
+            "ho_ten": true,
+            "que_quan": true,
+            "date": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "order_dan": {
+        "column": {
+            "order_id": true,
+            "cmt_id": true,
+            "order_name": true,
+            "so_luong": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "ORDER_DAN_CMT_ID_DANNGUYEN_CMT_ID": true
+        }
+    },
+    "dan-catalog_product_entity": {
+        "column": {
+            "entity_id": true,
+            "attribute_set_id": true,
+            "type_id": true,
+            "sku": true,
+            "has_options": true,
+            "required_options": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "DAN-CATALOG_PRODUCT_ENTITY_ATTRIBUTE_SET_ID": true,
+            "DAN-CATALOG_PRODUCT_ENTITY_SKU": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "dan_catalog_product_entity": {
+        "column": {
+            "entity_id": true,
+            "attribute_set_id": true,
+            "type_id": true,
+            "sku": true,
+            "has_options": true,
+            "required_options": true,
+            "created_at": true,
+            "updated_at": true,
+            "type_id_dan": true,
+            "type_id_dan_1": true
+        },
+        "index": {
+            "DAN_CATALOG_PRODUCT_ENTITY_ATTRIBUTE_SET_ID": true,
+            "DAN_CATALOG_PRODUCT_ENTITY_SKU": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "a_dan_catalog_product_entity": {
+        "column": {
+            "entity_id": true,
+            "attribute_set_id": true,
+            "type_id_dan_1": true,
+            "sku": true,
+            "has_options": true,
+            "required_options": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "A_DAN_CATALOG_PRODUCT_ENTITY_ATTRIBUTE_SET_ID": true,
+            "A_DAN_CATALOG_PRODUCT_ENTITY_SKU": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "students": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "gender": true,
+            "dob": true,
+            "address": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,31 @@
+
+<?php
+
+/**
+ * @var \Vnext\BasicTraining\Block\Index $block
+ */
+?>
+<table class="items-to-invoice">
+    <tr>
+        <th>Entity Id</th>
+        <th>Name</th>
+        <th>Gender </th>
+        <th>Date </th>
+    </tr>
+
+    <?php foreach ($block->sayHello() as $value) {?>
+    <tr>
+        <td><?php echo $value->getData()['entity_id']?></td>
+        <td><?php echo $value->getData()['name']?></td>
+        <td><?php echo $value->getData()['gender']?></td>
+        <td><?php echo $value->getData()['dob']?></td>
+    </tr>
+    <?php } ?>
+
+
+</table>
+<?php if ($block->getPagerHtml()): ?>
+    <div class="order-products-toolbar toolbar bottom">
+        <?= $block->getPagerHtml() ?>
+    </div>
+<?php endif ?>
