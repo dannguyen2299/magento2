@@ -14,6 +14,7 @@ $postArray = $viewModel->getDetails();
 //echo $gridrecords->getDate();
 ?>
 <div class="table-wrapper orders-history">
+    <a href="<?php echo $block->getUrl('student/post/index') ?>"> Home</a>
 
     <!--        Tabel-->
     <table class="data table table-order-items history" id="my-orders-table">
@@ -35,9 +36,9 @@ $postArray = $viewModel->getDetails();
                 <?php echo $gridrecords->getName() ?>
             </td>
             <td data-th="<?= $block->escapeHtml(__('Gender')) ?>" class="col id">
-                <?php if($gridrecords->getGender()==1){
+                <?php if ($gridrecords->getGender() == 1) {
                     echo "Nam";
-                }else{
+                } else {
                     echo "Nữ";
                 } ?>
             </td>

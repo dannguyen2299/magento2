@@ -12,7 +12,8 @@ class AddData implements DataPatchInterface
 
     public function __construct(
         \Vnext\BasicTraining\Model\PostFactory $postFactory
-    ) {
+    )
+    {
         $this->postFactory = $postFactory;
     }
 
@@ -23,13 +24,13 @@ class AddData implements DataPatchInterface
                 'name' => 'Nguyen Thi My Hanh',
                 'gender' => '0',
                 'dob' => '1999-4-12',
-                'address'=>'Thai Binh'
+                'address' => 'Thai Binh'
             ],
             [
                 'name' => 'Nguyen Viet Hai',
                 'gender' => '1',
                 'dob' => '1998-8-12',
-                'address'=>'Thai Binh'
+                'address' => 'Thai Binh'
             ]
         ];
         foreach ($sampleData as $data) {
