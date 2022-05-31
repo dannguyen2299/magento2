@@ -38,6 +38,9 @@ $dataStudent = $block->getDataStudent(); ?>
                     <td data-th="<?= $block->escapeHtml(__('Name')) ?>" class="col id">
                         <?php echo $item->getName() ?>
                     </td>
+                    <td data-th="<?= $block->escapeHtml(__('Dob')) ?>" class="col id">
+                        <span><?= $block->escapeHtml($item->getdob()) ?></span>
+                    </td>
                     <td data-th="<?= $block->escapeHtml(__('Gender')) ?>" class="col id">
                         <?php if ($item->getGender() == 1) {
                             echo "Nam";
@@ -45,9 +48,7 @@ $dataStudent = $block->getDataStudent(); ?>
                             echo "Nữ";
                         } ?>
                     </td>
-                    <td data-th="<?= $block->escapeHtml(__('Dob')) ?>" class="col id">
-                        <span><?= $block->escapeHtml($item->getdob()) ?></span>
-                    </td>
+
                     <td data-th="<?= $block->escapeHtml(__('Detail')) ?>" class="col id">
                         <a href="<?php echo $block->getUrl('student/post/details') . '?ids=' . $item->getEntity_id() ?>">Detail</a>
                     </td>
